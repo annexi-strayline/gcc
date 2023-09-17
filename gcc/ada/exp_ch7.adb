@@ -8551,7 +8551,9 @@ package body Exp_Ch7 is
             --  Tprot_typeC, which is, of course, not actually a member of
             --  prot_typeV'Class, and thus incompatible.
 
-            if Present (Corresponding_Record_Type (Parent_Utyp)) then
+            if Ekind (Parent_Utyp) in Concurrent_Kind
+              and then Present (Corresponding_Record_Type (Parent_Utyp))
+            then
                Parent_Utyp := Corresponding_Record_Type (Parent_Utyp);
             end if;
 
